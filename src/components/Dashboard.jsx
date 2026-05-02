@@ -4,24 +4,14 @@ import { ExpenseContext } from "../context/ExpenseContext";
 const Dashboard = () => {
   const { expenses } = useContext(ExpenseContext);
 
-  const total = expenses.reduce((sum, e) => sum + e.amount, 0);
+  const total = expenses.reduce((sum, e) => sum + parseFloat(e.amount || 0), 0);
 
   return (
-    <div style={styles.box}>
+    <div className="dashboard-box">
       <h2>Total Expense</h2>
-      <h1>₹{total}</h1>
+      <h1>₹{total.toFixed(2)}</h1>
     </div>
   );
-};
-
-const styles = {
-  box: {
-    textAlign: "center",
-    background: "#000",
-    padding: "20px",
-    borderRadius: "15px",
-    marginBottom: "20px"
-  }
 };
 
 export default Dashboard;

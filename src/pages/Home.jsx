@@ -9,13 +9,14 @@ const Home = () => {
     <>
       <Navbar />
 
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/2331/2331943.png"
-        alt="expense"
-        style={{ display: "block", margin: "20px auto", width: "80px" }}
-      />
-
       <div className="container">
+        <div className="expense-icon">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2331/2331943.png"
+            alt="expense"
+          />
+        </div>
+
         <h1>Expense Tracker</h1>
         <Dashboard />
         <ExpenseForm />

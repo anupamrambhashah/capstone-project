@@ -4,34 +4,31 @@ import { ExpenseContext } from "../context/ExpenseContext";
 const ExpenseList = () => {
   const { expenses, deleteExpense, search } = useContext(ExpenseContext);
 
+  const filteredExpenses = expenses.filter((e) =>
+    e.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div>
-      {expenses
-        .filter((e) =>
-          e.title.toLowerCase().includes(search.toLowerCase())
-        )
-        .map((e) => (
-          <div key={e.id} style={styles.card}>
-            <div>
+      {filteredExpenses.length === 0 ? (
+        <p style={{ textAlign: "center", color: "#999", marginTop: "20px" }}>
+          No expenses found
+        </p>
+      ) : (
+        filteredExpenses.map((e) => (
+          <div key={e.id} className="expense-card">
+            <div className="expense-info">
               <strong>{e.title}</strong>
-              <p>₹{e.amount} | {e.category}</p>
+              <p>₹{parseFloat(e.amount).toFixed(2)} | {e.category}</p>
             </div>
-            <button onClick={() => deleteExpense(e.id)}></button>
+            <button className="delete-btn" onClick={() => deleteExpense(e.id)}>
+              Delete
+            </button>
           </div>
-        ))}
+        ))
+      )}
     </div>
   );
-};
-
-const styles = {
-  card: {
-    display: "flex",
-    justifyContent: "space-between",
-    background: "#222",
-    padding: "12px",
-    borderRadius: "10px",
-    marginTop: "10px"
-  }
 };
 
 export default ExpenseList;

@@ -7,16 +7,10 @@ const SearchBar = () => {
   return (
     <input
       type="text"
-      placeholder=" Search expenses..."
+      placeholder="Search expenses..."
       value={search}
       onChange={(e) => setSearch(e.target.value)}
-      style={{
-        width: "100%",
-        padding: "10px",
-        marginBottom: "10px",
-        borderRadius: "8px",
-        border: "none"
-      }}
+      className="search-box"
     />
   );
 };
