@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #1d2671, #c33764);
+  color: white;
+}
+
+.container {
+  max-width: 700px;
+  margin: 30px auto;
+  background: rgba(0,0,0,0.6);
+  padding: 25px;
+  border-radius: 15px;
+}
